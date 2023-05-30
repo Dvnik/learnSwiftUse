@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12256C952A25E2F20016938A /* MoveSlideLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12256C932A25E2F20016938A /* MoveSlideLineViewController.swift */; };
+		12256C962A25E2F20016938A /* MoveSlideLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12256C942A25E2F20016938A /* MoveSlideLineViewController.xib */; };
+		12256C982A25E5DA0016938A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12256C972A25E5DA0016938A /* UIViewController+Extension.swift */; };
+		12256C9A2A25E8600016938A /* CircleUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12256C992A25E8600016938A /* CircleUIControl.swift */; };
+		12256C9D2A25E8CC0016938A /* MoveTextWithGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12256C9B2A25E8CC0016938A /* MoveTextWithGestureViewController.swift */; };
+		12256C9E2A25E8CC0016938A /* MoveTextWithGestureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12256C9C2A25E8CC0016938A /* MoveTextWithGestureViewController.xib */; };
 		125C66BA2A25C3AC005C565C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125C66B92A25C3AC005C565C /* AppDelegate.swift */; };
 		125C66BC2A25C3AC005C565C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125C66BB2A25C3AC005C565C /* SceneDelegate.swift */; };
 		125C66BE2A25C3AC005C565C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125C66BD2A25C3AC005C565C /* ViewController.swift */; };
@@ -20,6 +26,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12256C932A25E2F20016938A /* MoveSlideLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveSlideLineViewController.swift; sourceTree = "<group>"; };
+		12256C942A25E2F20016938A /* MoveSlideLineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoveSlideLineViewController.xib; sourceTree = "<group>"; };
+		12256C972A25E5DA0016938A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		12256C992A25E8600016938A /* CircleUIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleUIControl.swift; sourceTree = "<group>"; };
+		12256C9B2A25E8CC0016938A /* MoveTextWithGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTextWithGestureViewController.swift; sourceTree = "<group>"; };
+		12256C9C2A25E8CC0016938A /* MoveTextWithGestureViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoveTextWithGestureViewController.xib; sourceTree = "<group>"; };
 		125C66B62A25C3AC005C565C /* simpleUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = simpleUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		125C66B92A25C3AC005C565C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		125C66BB2A25C3AC005C565C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +57,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12256C922A25E2300016938A /* UIMoveAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				12256C932A25E2F20016938A /* MoveSlideLineViewController.swift */,
+				12256C942A25E2F20016938A /* MoveSlideLineViewController.xib */,
+				12256C992A25E8600016938A /* CircleUIControl.swift */,
+				12256C9B2A25E8CC0016938A /* MoveTextWithGestureViewController.swift */,
+				12256C9C2A25E8CC0016938A /* MoveTextWithGestureViewController.xib */,
+			);
+			path = UIMoveAnimation;
+			sourceTree = "<group>";
+		};
 		125C66AD2A25C3AC005C565C = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +90,7 @@
 			children = (
 				125C66CE2A25C3F0005C565C /* Extension */,
 				125C66CD2A25C3E7005C565C /* SimpleGesture */,
+				12256C922A25E2300016938A /* UIMoveAnimation */,
 				125C66B92A25C3AC005C565C /* AppDelegate.swift */,
 				125C66BB2A25C3AC005C565C /* SceneDelegate.swift */,
 				125C66BD2A25C3AC005C565C /* ViewController.swift */,
@@ -91,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				125C66CF2A25C425005C565C /* UIColor+Extension.swift */,
+				12256C972A25E5DA0016938A /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -153,6 +179,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12256C9E2A25E8CC0016938A /* MoveTextWithGestureViewController.xib in Resources */,
+				12256C962A25E2F20016938A /* MoveSlideLineViewController.xib in Resources */,
 				125C66C62A25C3AE005C565C /* LaunchScreen.storyboard in Resources */,
 				125C66D62A25C4D8005C565C /* ShowGestureViewController.xib in Resources */,
 				125C66C32A25C3AE005C565C /* Assets.xcassets in Resources */,
@@ -167,10 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12256C982A25E5DA0016938A /* UIViewController+Extension.swift in Sources */,
 				125C66BE2A25C3AC005C565C /* ViewController.swift in Sources */,
+				12256C952A25E2F20016938A /* MoveSlideLineViewController.swift in Sources */,
 				125C66BA2A25C3AC005C565C /* AppDelegate.swift in Sources */,
+				12256C9D2A25E8CC0016938A /* MoveTextWithGestureViewController.swift in Sources */,
 				125C66BC2A25C3AC005C565C /* SceneDelegate.swift in Sources */,
 				125C66D22A25C48F005C565C /* SimpleGestureMaker.swift in Sources */,
+				12256C9A2A25E8600016938A /* CircleUIControl.swift in Sources */,
 				125C66D02A25C425005C565C /* UIColor+Extension.swift in Sources */,
 				125C66D52A25C4D8005C565C /* ShowGestureViewController.swift in Sources */,
 			);

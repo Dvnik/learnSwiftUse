@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoveSlideLineViewController" customModule="simpleUI" customModuleProvider="target">
+            <connections>
+                <outlet property="stackViewButtons" destination="2TO-0n-uZB" id="hrP-gq-Nt9"/>
+                <outlet property="underLineLeadingConstraint" destination="Khw-pK-ibB" id="QRN-Mq-Yow"/>
+                <outlet property="underLineTopConstraint" destination="5Oc-0H-Z3N" id="9nh-ix-6IP"/>
+                <outlet property="underLineWidthConstraint" destination="Vhi-L3-5Ha" id="FRF-mX-ld8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewUnderLine" destination="R1t-Cg-kRM" id="0N3-cT-wBS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2TO-0n-uZB">
+                    <rect key="frame" x="0.0" y="59" width="393" height="57"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70T-L6-h1x">
+                            <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="57"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button1"/>
+                            <connections>
+                                <action selector="clickToMoveLine:" destination="-1" eventType="touchUpInside" id="vi6-tu-hMa"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wg-b8-WHF">
+                            <rect key="frame" x="98.333333333333329" y="0.0" width="163.66666666666669" height="57"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button2"/>
+                            <connections>
+                                <action selector="clickToMoveLine:" destination="-1" eventType="touchUpInside" id="SeW-x3-m7P"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3W-eX-kox">
+                            <rect key="frame" x="262" y="0.0" width="131" height="57"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button3"/>
+                            <connections>
+                                <action selector="clickToMoveLine:" destination="-1" eventType="touchUpInside" id="l0B-Fz-m37"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="9wg-b8-WHF" firstAttribute="width" secondItem="2TO-0n-uZB" secondAttribute="width" multiplier="5:12" id="lRq-94-40A"/>
+                        <constraint firstItem="70T-L6-h1x" firstAttribute="width" secondItem="2TO-0n-uZB" secondAttribute="width" multiplier="3:12" id="xpt-N7-2o7"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1t-Cg-kRM">
+                    <rect key="frame" x="0.0" y="116" width="98.333333333333329" height="3"/>
+                    <color key="backgroundColor" systemColor="tintColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="zju-yH-bcO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="2TO-0n-uZB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="37B-rb-Oa4"/>
+                <constraint firstItem="R1t-Cg-kRM" firstAttribute="top" secondItem="70T-L6-h1x" secondAttribute="bottom" id="5Oc-0H-Z3N"/>
+                <constraint firstItem="R1t-Cg-kRM" firstAttribute="leading" secondItem="70T-L6-h1x" secondAttribute="leading" id="Khw-pK-ibB"/>
+                <constraint firstItem="2TO-0n-uZB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LRz-PH-s04"/>
+                <constraint firstItem="R1t-Cg-kRM" firstAttribute="width" secondItem="70T-L6-h1x" secondAttribute="width" id="Vhi-L3-5Ha"/>
+                <constraint firstItem="2TO-0n-uZB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="aWL-EL-opf"/>
+                <constraint firstItem="2TO-0n-uZB" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" id="o3D-9V-9aH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-47" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
