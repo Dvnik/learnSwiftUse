@@ -1,9 +1,16 @@
-# 關於UIKit張傑的備份
+# UIKit 專案
 
-主要教材來源： https://www.appcoda.com.tw/swift/
+---
+2023.05.30
+
+其實沒什麼時間上來弄，所以建立一個simpleUI專案儲存些工作上做的小UI。
+以不使用CocoaPod等套件為主，
+有需要用套件的再開新的專案。
 
 ---
 2022.12.05
+
+主要教材來源： https://www.appcoda.com.tw/swift/
 
 雖然這個repo主要是存SwiftUI的專案，
 
