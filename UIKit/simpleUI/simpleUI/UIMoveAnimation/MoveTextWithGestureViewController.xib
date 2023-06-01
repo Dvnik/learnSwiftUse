@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoveTextWithGestureViewController" customModule="simpleUI" customModuleProvider="target">
             <connections>
                 <outlet property="btnCircle" destination="AHE-DS-isP" id="cXV-Ph-zZZ"/>
-                <outlet property="circleLeadingConstraint" destination="Ddd-T2-1Wd" id="6fX-yj-yyP"/>
+                <outlet property="circleCenterXConstraint" destination="Ddd-T2-1Wd" id="6fX-yj-yyP"/>
                 <outlet property="lblShowAction" destination="T6L-GP-1pS" id="5bb-Oh-ZD6"/>
                 <outlet property="stackItems" destination="90e-OS-53N" id="365-Vq-nGd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -47,23 +47,23 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14E-nQ-0Wp">
                                     <rect key="frame" x="0.0" y="0.0" width="373" height="30.666666666666668"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="90e-OS-53N">
-                                            <rect key="frame" x="140.33333333333337" y="0.0" width="297" height="30.666666666666668"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="90e-OS-53N">
+                                            <rect key="frame" x="156" y="0.0" width="249" height="30.666666666666668"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="S53-0v-dwn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="92.333333333333329" height="30.666666666666668"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="61.333333333333336" height="30.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode02" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2ga-ig-OQe">
-                                                    <rect key="frame" x="102.33333333333331" y="0.0" width="92.333333333333314" height="30.666666666666668"/>
+                                                    <rect key="frame" x="91.333333333333314" y="0.0" width="63.666666666666657" height="30.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode03" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZH6-Yu-cPZ">
-                                                    <rect key="frame" x="204.66666666666666" y="0.0" width="92.333333333333343" height="30.666666666666668"/>
+                                                    <rect key="frame" x="185" y="0.0" width="64" height="30.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -109,8 +109,7 @@
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="AHE-DS-isP" firstAttribute="leading" secondItem="S53-0v-dwn" secondAttribute="leading" id="Ddd-T2-1Wd"/>
-                                <constraint firstItem="AHE-DS-isP" firstAttribute="width" secondItem="S53-0v-dwn" secondAttribute="width" id="Pcu-06-cNq"/>
+                                <constraint firstItem="AHE-DS-isP" firstAttribute="centerX" secondItem="S53-0v-dwn" secondAttribute="centerX" id="Ddd-T2-1Wd"/>
                                 <constraint firstItem="14E-nQ-0Wp" firstAttribute="height" secondItem="Gfp-Lz-6Ip" secondAttribute="height" multiplier="15:60" id="ouX-x8-caS"/>
                             </constraints>
                         </stackView>

@@ -11,7 +11,7 @@ import UIKit
 
 class MoveTextWithGestureViewController: UIViewController {
     //MARK: @IBOutlet
-    @IBOutlet weak var circleLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var circleCenterXConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var btnCircle: CircleUIControl!
     @IBOutlet weak var stackItems: UIStackView!
@@ -71,11 +71,11 @@ class MoveTextWithGestureViewController: UIViewController {
      */
     private func movieFunctionName(_ newView: UIView) {
         //先關閉
-        circleLeadingConstraint.isActive = false
+        circleCenterXConstraint.isActive = false
         //改值
-        circleLeadingConstraint = btnCircle.leadingAnchor.constraint(equalTo: newView.leadingAnchor)
+        circleCenterXConstraint = btnCircle.leadingAnchor.constraint(equalTo: newView.leadingAnchor)
         //再Active
-        circleLeadingConstraint.isActive = true
+        circleCenterXConstraint.isActive = true
         //展現動畫
         UIViewPropertyAnimator(duration: 0.2, curve: .easeInOut) {
             self.view.layoutIfNeeded()
