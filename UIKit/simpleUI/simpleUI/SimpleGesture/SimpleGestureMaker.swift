@@ -34,12 +34,11 @@ extension SimpleGestureMakerDelegate {
 class SimpleGestureMaker: NSObject {
     //MARK: Values
     var delegate: SimpleGestureMakerDelegate?
-    var settingVC: UIViewController?//如果不是nil的話會自動註冊相關的手勢到UIViewController上
     //MARK: functions
     /**
      Tap 輕點
      */
-    func addTapAction(tapsRequired trNum: Int = 1, touchesRequired fingerNum: Int = 1) -> UITapGestureRecognizer {
+    func addTapAction(view: UIView, tapsRequired trNum: Int = 1, touchesRequired fingerNum: Int = 1) -> UITapGestureRecognizer {
         // 指輕點
         let fingers = UITapGestureRecognizer(target: self, action: #selector(gestureTap(_:) ))
         
@@ -48,24 +47,24 @@ class SimpleGestureMaker: NSObject {
         // 幾根指頭觸發
         fingers.numberOfTouchesRequired = fingerNum
         // 為視圖加入監聽手勢
-        settingVC?.view.addGestureRecognizer(fingers)
-        // return UITapGestureRecognizer
+        view.addGestureRecognizer(fingers)
+        // back gesture
         return fingers
     }
     /**
      Long Press 長按
      */
-    func addLongPressAction() -> UILongPressGestureRecognizer {
+    func addLongPressAction(view: UIView) -> UILongPressGestureRecognizer {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(gestureLongPress(_:) ))
-        
         // 為視圖加入監聽手勢
-        settingVC?.view.addGestureRecognizer(longPress)
+        view.addGestureRecognizer(longPress)
+        // back gesture
         return longPress
     }
     /**
      Swipe 滑動
      */
-    func addSwipeAction() -> [UISwipeGestureRecognizer] {
+    func addSwipeAction(view: UIView) -> [UISwipeGestureRecognizer] {
         var results = [UISwipeGestureRecognizer]()
         // 向上滑動
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(gestureSwipe(_:) ))
@@ -86,50 +85,56 @@ class SimpleGestureMaker: NSObject {
         results.append(swipeRight)
         // 為視圖加入監聽手勢
         results.forEach { gesture in
-            settingVC?.view.addGestureRecognizer(gesture)
+            view.addGestureRecognizer(gesture)
         }
-        
+        // back gesture
         return results
     }
     /**
      Pan 拖曳
      */
-    func addPanAction(minTouches minNum: Int = 1, maxTouches maxNum: Int = 1) -> UIPanGestureRecognizer {
+    func addPanAction(view: UIView, minTouches minNum: Int = 1, maxTouches maxNum: Int = 1) -> UIPanGestureRecognizer {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(gesturePan(_:)) )
         // 最少可以用幾指拖曳
         pan.minimumNumberOfTouches = minNum
         // 最多可以用幾指拖曳
         pan.maximumNumberOfTouches = maxNum
-        //因為要拖曳的是物件而非整個View，所以viewController不會被設定
+        // 為視圖加入監聽手勢
+        view.addGestureRecognizer(pan)
+        // back gesture
         return pan
     }
     /**
      Pinch 縮放
      */
-    func addPinchAction() -> UIPinchGestureRecognizer {
+    func addPinchAction(view: UIView) -> UIPinchGestureRecognizer {
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(gesturePinch(_:) ))
-        
         // 為視圖加入監聽手勢
-        settingVC?.view.addGestureRecognizer(pinch)
+        view.addGestureRecognizer(pinch)
+        // back gesture
         return pinch
     }
     /**
      Rotation 旋轉
      */
-    func addRotationAction() -> UIRotationGestureRecognizer {
+    func addRotationAction(view: UIView) -> UIRotationGestureRecognizer {
         let rotation = UIRotationGestureRecognizer(target: self, action: #selector(gestureRotation(_:) ))
         // 為視圖加入監聽手勢
-        settingVC?.view.addGestureRecognizer(rotation)
-        
+        view.addGestureRecognizer(rotation)
+        // back gesture
         return rotation
     }
-    // 刪除Gesture，預設是做這個class的UIViewController的移除
-    func removeGesture(_ recognizer: UIGestureRecognizer, view: UIView? = nil) {
-        if let view = view {
-            view.removeGestureRecognizer(recognizer)
-        }
-        else {
-            settingVC?.view.removeGestureRecognizer(recognizer)
+    /**
+     Remove 刪除
+     */
+    // 刪除Gesture
+    func removeGesture(view: UIView, recogizer: UIGestureRecognizer) {
+        view.removeGestureRecognizer(recogizer)
+    }
+    // 刪除Gesture多個手勢
+    func removeGesture(view: UIView, recogizerArray: [UIGestureRecognizer]) {
+        recogizerArray.forEach { item in
+            self.removeGesture(view: view,recogizer: item)
         }
     }
     // 取得手指在view上的點位置

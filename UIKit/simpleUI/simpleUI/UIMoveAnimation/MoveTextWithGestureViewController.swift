@@ -41,9 +41,8 @@ class MoveTextWithGestureViewController: UIViewController {
         movieNameToCenter()
         //設定delegate和設定手勢的ViewController
         gestureMaker.delegate = self
-        gestureMaker.settingVC = self
         // 建立Swipe手勢
-        _ = gestureMaker.addSwipeAction()
+        _ = gestureMaker.addSwipeAction(view: self.view)
         // 中心的文字設為隨機色
         lblShowAction.textColor = UIColor.randomColor()
         // 設定點擊事件

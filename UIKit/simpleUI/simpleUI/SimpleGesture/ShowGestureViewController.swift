@@ -44,7 +44,6 @@ class ShowGestureViewController: UIViewController {
     //MARK: private functions
     private func initGesture() {
         sgMaker.delegate = self
-        sgMaker.settingVC = self
         //註冊手勢
         registerTap()
         registerLongPress()
@@ -52,15 +51,15 @@ class ShowGestureViewController: UIViewController {
     //輕點
     private func registerTap() {
         // 雙指輕點 2根指頭觸發
-        doubleFinger = sgMaker.addTapAction(touchesRequired: 2)
+        doubleFinger = sgMaker.addTapAction(view: self.view, touchesRequired: 2)
         // 單指輕點 點2下才觸發
-        singleFinger = sgMaker.addTapAction(tapsRequired: 2)
+        singleFinger = sgMaker.addTapAction(view: self.view, tapsRequired: 2)
         // 雙指輕點沒有觸發時 才會檢測此手勢 以免手勢被蓋過
         singleFinger?.require(toFail: doubleFinger!)
     }
     // 長按
     private func registerLongPress() {
-        longPressFinger = sgMaker.addLongPressAction()
+        longPressFinger = sgMaker.addLongPressAction(view: self.view)
     }
     // 滑動
     private func registerSwipe() {
@@ -71,7 +70,7 @@ class ShowGestureViewController: UIViewController {
             viewDisplay.addSubview(viewSwipe)
         }
         // 滑動手勢
-        swipeActions = sgMaker.addSwipeAction()
+        swipeActions = sgMaker.addSwipeAction(view: self.view)
     }
     // 拖曳
     private func registerPan() {
@@ -83,10 +82,7 @@ class ShowGestureViewController: UIViewController {
             viewDisplay.addSubview(viewPan)
         }
         // 拖曳手勢
-        let panGesture = sgMaker.addPanAction()
-        // 為這個可移動的 UIView 加上監聽手勢
-        viewPan.addGestureRecognizer(panGesture)
-        panFinger = panGesture
+        panFinger = sgMaker.addPanAction(view: viewPan)
     }
     // 縮放
     private func registerPinch() {
@@ -96,7 +92,7 @@ class ShowGestureViewController: UIViewController {
             imgPinch.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
             viewDisplay.addSubview(imgPinch)
         }
-        pinchFinger = sgMaker.addPinchAction()
+        pinchFinger = sgMaker.addPinchAction(view: self.view)
     }
     // 旋轉
     private func registerRotation() {
@@ -106,7 +102,7 @@ class ShowGestureViewController: UIViewController {
             imgRotation.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
             viewDisplay.addSubview(imgRotation)
         }
-        rotationFinger = sgMaker.addRotationAction()
+        rotationFinger = sgMaker.addRotationAction(view: self.view)
     }
     // 印訊息
     private func newTextInfo(text: String) {
@@ -119,28 +115,32 @@ class ShowGestureViewController: UIViewController {
     }
     // 刪除和Button有關的Gesture
     private func removeGestureActions() {
-        swipeActions?.forEach({ item in
-            sgMaker.removeGesture(item)
-        })
-        if let panFinger = panFinger {
-            sgMaker.removeGesture(panFinger, view: viewSwipe)
+        // swipe
+        if let swipeArray = swipeActions, viewSwipe != nil {
+            sgMaker.removeGesture(view: self.view, recogizerArray: swipeArray)
+            viewSwipe?.removeFromSuperview()
+            viewSwipe = nil
         }
-        if let pinchFinger = pinchFinger {
-            sgMaker.removeGesture(pinchFinger)
+        // pan
+        if let panFinger = panFinger, viewPan != nil {
+            sgMaker.removeGesture(view: viewPan, recogizer: panFinger)
+            viewPan?.removeFromSuperview()
+            viewPan = nil
         }
-        if let rotationFinger = rotationFinger {
-            sgMaker.removeGesture(rotationFinger)
+        // pinch
+        if let pinchFinger = pinchFinger, imgPinch != nil {
+            sgMaker.removeGesture(view: self.view, recogizer: pinchFinger)
+            imgPinch?.removeFromSuperview()
+            imgPinch = nil
         }
-        viewSwipe?.removeFromSuperview()
-        viewSwipe = nil
-        viewPan?.removeFromSuperview()
-        viewPan = nil
-        imgPinch?.removeFromSuperview()
-        imgPinch = nil
-        imgRotation?.removeFromSuperview()
-        imgRotation = nil
+        // rotation
+        if let rotationFinger = rotationFinger, imgRotation != nil {
+            sgMaker.removeGesture(view: self.view, recogizer: rotationFinger)
+            imgRotation?.removeFromSuperview()
+            imgRotation = nil
+        }
     }
-    
+    // MARK: @IBAction
     @IBAction func clickSwipe(_ sender: Any) {
         removeGestureActions()
         registerSwipe()
@@ -192,7 +192,7 @@ extension ShowGestureViewController: SimpleGestureMakerDelegate {
         }
         
         if let point = point {
-            content += "\n位置：\(point)"
+            content += "\n位置：\(point)\n"
         }
         print(content)
         newTextInfo(text: content)

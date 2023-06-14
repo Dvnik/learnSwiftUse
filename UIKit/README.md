@@ -1,6 +1,15 @@
 # UIKit 專案
 
 ---
+2023.06.14
+
+修正SimpleGesture的程式碼，
+使用一陣子之後發現預設對整個ViewController的View做手勢不太方便，
+且在做拖曳的時候還特別不用ViewController的View。
+
+因此想了想再修正一版。
+
+---
 2023.05.30
 
 其實沒什麼時間上來弄，所以建立一個simpleUI專案儲存些工作上做的小UI。
