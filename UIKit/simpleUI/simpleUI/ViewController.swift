@@ -32,6 +32,10 @@ class ViewController: UIViewController {
         let vc = MoveTextWithGestureViewController(nibName: "MoveTextWithGestureViewController", bundle: Bundle(for: Self.self))
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    @IBAction func toCalcuateTime(_ sender: Any) {
+        let vc = ShowCalcuateTimeViewController(nibName: "ShowCalcuateTimeViewController", bundle: Bundle(for: Self.self))
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }
 

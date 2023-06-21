@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fYC-kx-et3">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uRv-ub-uRW">
-                                <rect key="frame" x="0.0" y="102.99999999999999" width="393" height="168.66666666666663"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="208"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxY-GL-1Wz">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="34.333333333333336"/>
@@ -40,6 +40,14 @@
                                         <buttonConfiguration key="configuration" style="plain" title="toMoveText"/>
                                         <connections>
                                             <action selector="toMoveText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="37H-Ym-kJv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eag-RV-f5U">
+                                        <rect key="frame" x="0.0" y="173.66666666666669" width="393" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="toCalcuateTime"/>
+                                        <connections>
+                                            <action selector="toCalcuateTime:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q7M-I2-Maf"/>
                                         </connections>
                                     </button>
                                 </subviews>
