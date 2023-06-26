@@ -38,6 +38,7 @@ class ShowCalcuateTimeViewController: UIViewController {
 
         swInit()
         cdInit()
+        self.hideKeyboardWhenTappedAround()
     }
     //MARK: functions
     func swInit() {
@@ -82,7 +83,6 @@ class ShowCalcuateTimeViewController: UIViewController {
         }
     }
     
-    
     @IBAction func lapStopWatch(_ sender: Any) {
         if statusCanLapSW {
             txvSWContent.text.append("\(swTime.getTimeStr())\n")
@@ -93,42 +93,73 @@ class ShowCalcuateTimeViewController: UIViewController {
         else {
             swTime.ResetAll()
             lblSWTime.text = swTime.getTimeStr()
+            txvSWContent.text = ""
         }
     }
     
-    
     @IBAction func startCountDown(_ sender: Any) {
         if statusStartCD {
+            statusStartCD = false
+            statusCanLapCD = true
             
+            btnCDStart.setTitle("Stop" ,for: .normal)
+            btnCDStart.setTitleColor(.red, for: .normal)
+            
+            btnCDLap.setTitle("Lap" ,for: .normal)
+            btnCDLap.setTitleColor(.white, for: .normal)
+            btnCDLap.isEnabled = true
+            
+            cdTime.Start()
         }
         else {
+            statusStartCD = true
+            statusCanLapCD = false
+            btnCDStart.setTitle("Start" ,for: .normal)
+            btnCDStart.setTitleColor(.white, for: .normal)
             
+            btnCDLap.setTitle("Reset" ,for: .normal)
+            btnCDStart.setTitleColor(.green, for: .normal)
+            
+            cdTime.Stop()
         }
     }
     
     @IBAction func lapCountDown(_ sender: Any) {
         if statusCanLapCD {
-            
+            txvCDContent.text.append("\(cdTime.getTimeStr())\n")
+            // 捲動到最下方
+            let range = NSRange(location: txvCDContent.text.count - 1, length: 1)
+            txvCDContent.scrollRangeToVisible(range)
         }
         else {
-            
+            cdTime.ResetAll()
+            lblCDTime.text = cdTime.getTimeStr()
+            txvCDContent.text = ""
         }
     }
     
     
     @IBAction func limitCountDown(_ sender: Any) {
+        let setHour = Int(tfCDHour.text ?? "0") ?? 0
+        let setMin = Int(tfCDMin.text ?? "0") ?? 0
+        let setSec = Int(tfCDSec.text ?? "0") ?? 0
         
-        
+        cdTime.setLimit(hour: setHour, min: setMin, sec: setSec)
+        lblCDTime.text = cdTime.getTimeStr()
     }
+    
 }
 
 extension ShowCalcuateTimeViewController: SimpleCalcuateTimeDelegate {
-    func onCount(_ object: SimpleCalcuateTime, formatTime: String) {
+    func onCount(_ object: SimpleCalcuateTime) {
+        
+        let defTimeStr = object.getTimeStr()
+        
         if object == cdTime {
-            lblCDTime.text = formatTime
+            lblCDTime.text = defTimeStr
         }
         else if object == swTime {
-            lblSWTime.text = formatTime
+            lblSWTime.text = defTimeStr
         }
     }
     

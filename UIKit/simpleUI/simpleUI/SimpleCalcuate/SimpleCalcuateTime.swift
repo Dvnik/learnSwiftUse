@@ -10,11 +10,11 @@
 import Foundation
 
 protocol SimpleCalcuateTimeDelegate {
-    func onCount(_ object: SimpleCalcuateTime, formatTime: String)
+    func onCount(_ object: SimpleCalcuateTime)
     func onLimit(_ object: SimpleCalcuateTime)
 }
 extension SimpleCalcuateTimeDelegate {
-    func onCount(_ object: SimpleCalcuateTime, formatTime: String) { }
+    func onCount(_ object: SimpleCalcuateTime) { }
     func onLimit(_ object: SimpleCalcuateTime) { }
 }
  
@@ -28,7 +28,7 @@ class SimpleCalcuateTime: NSObject {
     var delegate: SimpleCalcuateTimeDelegate?
     //MARK: private values
     private var timer = Timer()
-    private var limitMillSeconds = 0
+    private var limitMillSeconds: Int = 0
     // 設定上限
     func setLimit(millSecs: Int) {
         guard millSecs > 0 else { return }
@@ -36,14 +36,12 @@ class SimpleCalcuateTime: NSObject {
          倒數是直接對millSeconds做減法，所以設在millSeconds
          碼表則是反過來，要用另外的limitMillSeconds去儲存上限值
          */
-        switch type {
-        case .countDown:
-            millSeconds = millSecs
-        case .stopWatch:
-            limitMillSeconds = millSecs
+        limitMillSeconds = millSecs
+        //ResetAll()時,countDown可以利用limitMillSeconds重置倒數時間
+        if type == .countDown {
+            millSeconds = limitMillSeconds
         }
-        
-        limitStatus = true
+        limitStatus = limitMillSeconds > 0//不管是倒數還是碼表，都是以0為基準點
     }
     // 設定上限
     func setLimit(hour: Int = 0, min: Int = 0, sec: Int = 0) {
@@ -54,6 +52,9 @@ class SimpleCalcuateTime: NSObject {
     // 將millSeconds轉成碼表格式(預設)
     // 因millSeconds非private所以想要的話可以自己取用
     func getTimeStr() -> String {
+        if millSeconds < 0 {
+            millSeconds = 0
+        }
         
         let runTime = millSeconds
         
@@ -80,18 +81,18 @@ class SimpleCalcuateTime: NSObject {
     }
     // 重設狀態
     func ResetAll() {
-        millSeconds = 0
-        limitStatus = false
+        millSeconds = type == .stopWatch ? 0 : limitMillSeconds
+        
+        limitStatus = limitMillSeconds > 0
     }
     // 檢查上限值狀態
     private func checkLimitCount() {
-        guard limitStatus else { return }
-        
         var toStop = false
-        switch type {
-        case .countDown:
+        
+        if type == .countDown {// 倒數會自動停止
             toStop = millSeconds <= 0
-        case .stopWatch:
+        }
+        else if type == .stopWatch, limitStatus {// 碼表則是看有無設定極限值再決定自動停止
             toStop = millSeconds >= limitMillSeconds
         }
         
@@ -110,7 +111,7 @@ class SimpleCalcuateTime: NSObject {
         }
         
         checkLimitCount()
-        delegate?.onCount(self, formatTime: getTimeStr())
+        delegate?.onCount(self)
     }
     
     
