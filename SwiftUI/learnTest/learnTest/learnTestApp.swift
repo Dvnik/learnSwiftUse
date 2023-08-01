@@ -2,7 +2,7 @@
 //  learnTestApp.swift
 //  learnTest
 //
-//  Created by 翊軒 on 2023/8/1.
+//  Created by on 2023/8/1.
 //
 
 import SwiftUI
