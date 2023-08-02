@@ -20,6 +20,16 @@ extension SimpleCalcuateTimeDelegate {
  
 
 class SimpleCalcuateTime: NSObject {
+    //MARK: get/set values
+    var totalHour: Int {
+        get { return millSeconds/360000 }
+    }
+    var totalMin: Int {
+        get { return millSeconds/6000 }
+    }
+    var totalSec: Int {
+        get { return millSeconds/100 }
+    }
     //MARK: values
     var type: eClockType = .stopWatch
     var millSeconds = 0
