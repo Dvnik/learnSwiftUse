@@ -2,25 +2,23 @@
 //  ContentView.swift
 //  learnTest
 //
-//  Created by on 2023/8/1.
+//  Created by on 2024/1/30.
 //
 
 import SwiftUI
-
+//預設的ContentView
 struct ContentView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
-                .foregroundColor(.accentColor)
+                .foregroundStyle(.tint)
             Text("Hello, world!")
         }
         .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
