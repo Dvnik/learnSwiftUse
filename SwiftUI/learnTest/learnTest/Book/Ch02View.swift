@@ -2,7 +2,7 @@
 //  Ch02View.swift
 //  learnTest
 //
-//  Created by 翊軒 on 2024/1/30.
+//  Created by on 2024/1/30.
 //
 
 import SwiftUI
