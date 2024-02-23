@@ -98,31 +98,8 @@ struct Ch10View: View {
     Ch10View()
 }
 
-struct Restaurant {
-    //因為SwiftUI簡化了很多UI的佈局，所以像List要抓出特訂的項目就需要特定的方式去辨別個體位置，UUID就是一個普遍的方法
-    var id = UUID()
-    
-    var name: String
-    var image: String
-}
-/**
- BasicImageRow 與FullImageRow
- 是展示如何通過預先製作的方式達到一瞬間替換樣式的做法
- 
- */
-struct BasicImageRow: View {
-    var restaurant: Restaurant
-    
-    var body: some View {
-        HStack {
-            Image(restaurant.image)
-                .resizable()
-                .frame(width: 40, height: 40)
-                .cornerRadius(5)
-            Text(restaurant.name)
-        }
-    }
-}
+
+
 
 struct FullImageRow: View {
     var restaurant: Restaurant
